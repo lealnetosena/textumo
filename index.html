@@ -11,32 +11,79 @@
       background-color: #384B5A;
       color: #fff;
     }
+
     header {
       background-color: #4A6F8E;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
+
     header h1 {
       margin: 0;
       font-size: 1.5rem;
     }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
     nav a {
       color: #fff;
-      margin-left: 1rem;
       text-decoration: none;
       font-weight: bold;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #4A6F8E;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 0 10px #00000055;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
     .container {
       max-width: 1000px;
       margin: auto;
       padding: 2rem;
       text-align: center;
     }
+
     .icon-box {
       background-color: #4A6F8E;
       border-radius: 20px;
@@ -47,21 +94,26 @@
       justify-content: center;
       align-items: center;
     }
+
     .icon-box svg {
       width: 60px;
       height: 60px;
       fill: #FFFFFF;
     }
+
     h2 {
       font-size: 2rem;
     }
+
     p {
       font-size: 1.1rem;
       line-height: 1.6;
     }
+
     .cta {
       margin-top: 2rem;
     }
+
     .download-btn {
       background-color: #4A6F8E;
       color: #fff;
@@ -71,9 +123,11 @@
       border-radius: 10px;
       cursor: pointer;
     }
+
     .download-btn:hover {
       background-color: #5a83a4;
     }
+
     footer {
       background-color: #2c3944;
       padding: 2rem;
@@ -82,11 +136,13 @@
       color: #ccc;
       margin-top: 3rem;
     }
+
     footer a {
       color: #fff;
       text-decoration: none;
       margin: 0 1rem;
     }
+
     footer a:hover {
       text-decoration: underline;
     }
@@ -95,7 +151,12 @@
 <body>
   <header>
     <h1>Transcrição Inteligente</h1>
-    <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="nav">
       <a href="#">Início</a>
       <a href="#features">Funcionalidades</a>
       <a href="#download">Download</a>
@@ -135,5 +196,11 @@
       <a href="#contato">Contato</a>
     </p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav').classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
